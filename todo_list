@@ -1,0 +1,153 @@
+def Add():
+    task={}
+    global auto_increment
+    auto_increment+=1
+    task["taskId"]=auto_increment
+    task["taskName"]= input("Enter the task name:")
+    task["taskStatus"]= "pending"
+    todo_list.append(task)
+    print("\nYour task has been added to the todo list with status as pending.\n")
+
+   
+
+def List_all():
+    if len(todo_list)==0:
+        print("\nThere are no tasks in your todo list.\n")
+    else:
+        i=0
+        for i in todo_list:
+            task={todo_list[i]}
+            for key,value in task:
+                print(key+": "+value)
+
+       
+
+def List_by_status(selected_status):
+    if len(todo_list)==0:
+        print("\nThere are no tasks in your todo list.\n")
+    else:
+        for key,status in todo_list:
+            if status==selected_status:
+                print(key+": "+status)
+            else:
+                print("\nEnter the status correctly!\n")
+                
+                
+                
+# def Close():
+#     for key,value in todo_list:
+#         print(key+": "+value)
+#     choice=input("Choose the task that need to be closed:")
+
+#     if choice in todo_list:
+#         todo_list[choice]="completed"
+#         print("\nThe task \'"+choice+"\' has been completed.\n")
+#     else:
+#         print("\nNo such task exist in the todo list.\n")
+
+
+
+# def Update():
+#     for key,value in todo_list.items():
+#         print(key+": "+value)
+#     choice=input("Choose the task that need to be updated:")
+#     new_task=input("Enter the new task or edited task:")
+
+#     if choice in todo_list:
+#         todo_list[new_task]=todo_list.pop(choice)
+
+#     print("\nYour task has been updated.\n")
+#     for key,value in todo_list.items():
+#         print(key+": "+value)
+
+   
+
+# def Delete():
+#     for key,value in todo_list.items():
+#         print(key+": "+value)
+#     choice=input("Choose the task that need to be deleted:")
+#     decision=input("Are you sure you want to delete the task-  "+ choice+"(y/n):")
+
+#     if decision=='y' or decision=='Y':
+#         if choice in todo_list:
+#             todo_list.pop(choice)
+#             print("\nYour task has been deleted.\n")
+#         else:
+#             print("\nNo such task exist in the todo list.\n")
+    
+
+
+# def Write_to_file(todo_list):
+#     with open("Pending.txt","w") as file_pending:
+#         for task,status in todo_list.items():
+#             if status == "pending":
+#                 file_pending.write(task +"\n")
+   
+#     with open("Completed.txt","w") as file_completed:
+#         for task,status in todo_list.items():
+#             if status == "completed":
+#                 file_completed.write(task +"\n")   
+       
+            
+
+
+
+
+todo_list=[]
+auto_increment=0
+repeat=True
+while repeat:
+    print("*********\nOptions: \n*********")
+    print('''
+    1.Add
+    2.List all
+    3.List pending or closed
+    4.Close
+    5.Update
+    6.Delete
+    7.Write to file (Pending and Completed)
+    8.Exit''')
+    choice=int(input("Choose an option from above:"))
+    match choice:
+
+        case 1:
+            no_of_entry=int(input("Enter the number of tasks you want to add:"))
+            i=0
+            for i in range(no_of_entry):
+                Add()
+
+        case 2:
+            List_all()
+            
+        case 3:
+            selected_choice=int(input(" 1.pending \n 2.completed \n Choose the status:"))
+            if selected_choice==1:
+                selected_status="pending"
+                List_by_status(selected_status)
+            elif selected_choice==2:
+                selected_status="completed"
+                List_by_status(selected_status)
+            else:
+                print("\nWrong input\n")
+
+        # case 4:
+        #     Close()
+
+        # case 5:
+        #     Update()
+
+        # case 6:
+        #     Delete()
+
+        # case 7:
+        #     Write_to_file(todo_list)
+
+        # case 8:
+        #     decision=input("Do you want to exit(y/n:)")
+        #     if decision=='y' or decision=='Y': 
+        #         repeat=False
+        #     else:
+        #         repeat=True
+
+        case _:
+            print("\nInvalid Input\n")
