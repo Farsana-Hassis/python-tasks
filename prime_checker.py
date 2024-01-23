@@ -14,7 +14,7 @@ def take_input():
                 check_again()
             else:
                 return entry
-        except:
+        except ValueError:
             print("Please enter only natural numbers.\n Try entering again.\n")
         
 
@@ -71,8 +71,3 @@ while True:
     if not check_again():
         break
 
-# The changes are:
-# 1)Docstrings and comments has been added.
-# 2)Validation error has been dealt.
-# 3)A loop has been created so until user decide to leave, the program will be repeated.
-# 4)Clear instructions has been added for the user.

@@ -92,10 +92,3 @@ while True:
         print("Thank you!!")
         break
 
-# The changes are:
-# 1)An updated menu has bee created where the user has two options.
-# 2)A loop has been created so until user decide to leave, the program will be repeated.
-# 3)Validation error has been dealt.
-# 4)The error when a large number is entered is dealt by limiting the input.
-# 5)Docstrings and comments has been added.
-# 6)Clear instructions has been added for the user.
